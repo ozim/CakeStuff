@@ -16,28 +16,31 @@
 
             Stack<char> parensStack = new Stack<char>();
 
-            int braceCounter = 0;
-
             for (int i = 0; i < codeArray.Length; i++)
             {
-                if((parensStack.Peek() == codeArray[i])) {
-                    parensStack.Pop();
-                } else {
-                    if (openersClosersMap.ContainsKey(codeArray[i])) {
-                        parensStack.Push(codeArray[i]);
-                    }
 
-                    if (openersClosersMap.ContainsValue(codeArray[i]) && codeArray[i]!='|')
+                if(codeArray[i]=='|' && parensStack.Peek() != '|') {
+                    parensStack.Push(codeArray[i]);
+                } else if(codeArray[i] == '|')
+                {
+                    parensStack.Pop();
+                }
+
+                if (openersClosersMap.ContainsKey(codeArray[i]))
+                {
+                    parensStack.Push(codeArray[i]);
+                }
+
+                if (openersClosersMap.ContainsValue(codeArray[i]) )
+                {
+                    var current = parensStack.Pop();
+                    if (openersClosersMap[current] != codeArray[i])
                     {
-                        var current = parensStack.Pop();
-                        if (openersClosersMap[current] != codeArray[i])
-                        {
-                            return false;
-                        }
+                        return false;
                     }
                 }
             }
-            
+
             return parensStack.Count == 0;
         }
     }

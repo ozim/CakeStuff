@@ -11,6 +11,7 @@
         [TestCase("{ [ ] { | | | } }", Result = false)]
         [TestCase("{ [ ( ] ) }", Result = false)]
         [TestCase("{ [ }", Result = false)]
+        
         public bool CheckOutcome(string code)
         {
             BracesValidator validator = new BracesValidator();
