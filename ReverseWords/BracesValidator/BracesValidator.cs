@@ -7,8 +7,11 @@
         public bool Validate(string code)
         {
             char[] codeArray = code.ToCharArray();
-            List<char> openers = new List<char> { '{', '[', '(' };
-            List<char> closers = new List<char> { '}', ']', ')' };
+
+            Dictionary<char, char> openersClosersMap = new Dictionary<char, char>();
+            openersClosersMap.Add('{', '}');
+            openersClosersMap.Add('[', ']');
+            openersClosersMap.Add('(', ')');
 
             Stack<char> parensStack = new Stack<char>();
 
@@ -16,13 +19,13 @@
 
             for (int i = 0; i < codeArray.Length; i++)
             {
-                if(openers.Contains(codeArray[i])) {
+                if(openersClosersMap.ContainsKey(codeArray[i])) {
                     parensStack.Push(codeArray[i]);
                 }
 
-                if(closers.Contains(codeArray[i])) {
+                if(openersClosersMap.ContainsValue(codeArray[i])) {
                     var current = parensStack.Pop();
-                    if(openers.IndexOf(current) != closers.IndexOf(codeArray[i])) {
+                    if(openersClosersMap[current] != codeArray[i]) {
                         return false;
                     }
                 }
