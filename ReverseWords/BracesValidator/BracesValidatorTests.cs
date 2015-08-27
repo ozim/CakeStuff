@@ -6,6 +6,9 @@
     public class BracesValidatorTests
     {
         [TestCase("{ [ ] ( ) }", Result = true)]
+        [TestCase("{ [ ] | | }", Result = true)]
+        [TestCase("{ [ ] ( | ) | }", Result = false)]
+        [TestCase("{ [ ] { | | | } }", Result = false)]
         [TestCase("{ [ ( ] ) }", Result = false)]
         [TestCase("{ [ }", Result = false)]
         public bool CheckOutcome(string code)

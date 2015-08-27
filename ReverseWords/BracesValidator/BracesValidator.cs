@@ -12,6 +12,7 @@
             openersClosersMap.Add('{', '}');
             openersClosersMap.Add('[', ']');
             openersClosersMap.Add('(', ')');
+            openersClosersMap.Add('|', '|');
 
             Stack<char> parensStack = new Stack<char>();
 
@@ -19,14 +20,20 @@
 
             for (int i = 0; i < codeArray.Length; i++)
             {
-                if(openersClosersMap.ContainsKey(codeArray[i])) {
-                    parensStack.Push(codeArray[i]);
-                }
+                if((parensStack.Peek() == codeArray[i])) {
+                    parensStack.Pop();
+                } else {
+                    if (openersClosersMap.ContainsKey(codeArray[i])) {
+                        parensStack.Push(codeArray[i]);
+                    }
 
-                if(openersClosersMap.ContainsValue(codeArray[i])) {
-                    var current = parensStack.Pop();
-                    if(openersClosersMap[current] != codeArray[i]) {
-                        return false;
+                    if (openersClosersMap.ContainsValue(codeArray[i]) && codeArray[i]!='|')
+                    {
+                        var current = parensStack.Pop();
+                        if (openersClosersMap[current] != codeArray[i])
+                        {
+                            return false;
+                        }
                     }
                 }
             }
