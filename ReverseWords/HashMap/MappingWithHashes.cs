@@ -13,18 +13,17 @@
 
         internal void Add(string item)
         {
-            
+            int calculatedIndex = CalculateIndex(item);
+            internalContainer[calculatedIndex].Insert(item);
         }
 
         public bool Contains(string item) {
-
-            return false;
+            int calculatedIndex = CalculateIndex(item);
+            return internalContainer[calculatedIndex].CheckIfContains(item);
         }
 
         private int CalculateIndex(string item) {
-            
             char[] itemByCharacter = item.ToCharArray();
-
             return 0;
         }
     }
