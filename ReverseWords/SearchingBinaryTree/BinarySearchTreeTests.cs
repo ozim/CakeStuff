@@ -19,11 +19,13 @@
             tree.Add(new Node { Value = 5 });
             tree.Add(new Node { Value = 15 });
             tree.Add(new Node { Value = 4 });
+            tree.Add(new Node { Value = 13 });
 
             Assert.AreEqual(10, tree.Root.Value);
             Assert.AreEqual(5, tree.Root.Right.Value);
             Assert.AreEqual(15, tree.Root.Left.Value);
             Assert.AreEqual(4, tree.Root.Right.Right.Value);
+            Assert.AreEqual(13, tree.Root.Left.Right.Value);
         }
     }
 }
