@@ -8,14 +8,31 @@
 
     class BinarySearchTree
     {
-        Node Root { get; set; }
+        public Node Root { get; private set; }
 
         public void Add(Node node) {
             if(Root!=null) {
-                if(Root.Value > node.Value) {
-                    Root.Right = node;
-                } else {
-                    Root.Left = node;
+                Node current = Root;
+
+                while(current != null) {
+                    if (current.Value > node.Value)
+                    {
+                        if (current.Right != null) {
+                            current = current.Right;
+                            continue;
+                         }
+                        Root.Right = node;
+                        current = null;
+                    }
+                    else
+                    {
+                        if (current.Left != null) {
+                            current = current.Left;
+                            continue;
+                        }
+                        Root.Left = node;
+                        current = null;
+                    }
                 }
             } else {
                 Root = node;
