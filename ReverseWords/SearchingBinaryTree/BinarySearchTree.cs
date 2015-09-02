@@ -21,7 +21,7 @@
                             current = current.Right;
                             continue;
                          }
-                        Root.Right = node;
+                        current.Right = node;
                         current = null;
                     }
                     else
@@ -30,7 +30,7 @@
                             current = current.Left;
                             continue;
                         }
-                        Root.Left = node;
+                        current.Left = node;
                         current = null;
                     }
                 }
