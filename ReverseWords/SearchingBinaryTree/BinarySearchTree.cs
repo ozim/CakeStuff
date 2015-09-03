@@ -38,5 +38,18 @@
                 Root = node;
             }
         }
+        
+        public int FindSecondLargest() {
+            if (Root == null) throw new InvalidOperationException("Root not set");
+            Node current = Root;
+
+            while(current.Left != null) {
+                current = current.Left;
+            }
+            if(current.Right != null) {
+                return current.Right.Value;
+            }
+            return current.Value;
+        }
     }
 }

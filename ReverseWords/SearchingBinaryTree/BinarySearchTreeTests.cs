@@ -27,5 +27,28 @@
             Assert.AreEqual(4, tree.Root.Right.Right.Value);
             Assert.AreEqual(13, tree.Root.Left.Right.Value);
         }
+
+        [Test]
+        public void FindSecondLargest()
+        {
+
+            BinarySearchTree tree = new BinarySearchTree();
+            tree.Add(new Node { Value = 10 });
+            tree.Add(new Node { Value = 5 });
+            tree.Add(new Node { Value = 15 });
+            tree.Add(new Node { Value = 4 });
+            tree.Add(new Node { Value = 13 });
+
+            int result = tree.FindSecondLargest();
+
+            Assert.AreEqual(13, result);
+        }
+
+        [Test]
+        public void ThrowsExceptionWhenRootNotSet()
+        {
+            BinarySearchTree tree = new BinarySearchTree();
+            Assert.Throws(typeof(InvalidOperationException), () => tree.FindSecondLargest());
+        }
     }
 }
