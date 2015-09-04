@@ -11,7 +11,6 @@
 
             for (int i = position; i < codeArray.Length; i++)
             {
-
                 if (codeArray[i] == '(')
                 {
                     parensStack.Push(codeArray[i]);

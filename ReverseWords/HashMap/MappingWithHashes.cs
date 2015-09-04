@@ -1,14 +1,7 @@
 ﻿namespace HashMap
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     public class MappingWithHashes
     {
-
         private BucketHolder[] internalContainer = new BucketHolder[1000];
 
         public MappingWithHashes(){

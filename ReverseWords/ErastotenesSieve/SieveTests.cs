@@ -32,6 +32,5 @@
             Assert.True(result.Any(x => x == 1));
             Assert.True(result.Any(x => x == 0));
         }
-
     }
 }
