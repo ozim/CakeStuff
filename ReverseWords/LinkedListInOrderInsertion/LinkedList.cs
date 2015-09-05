@@ -51,6 +51,16 @@
             return current.Value;
         }
 
+        internal void PrintInReversedOrder(Element startElement) {
+            if (startElement == null)
+            {
+                return;
+            }
+            
+            PrintInReversedOrder(startElement.Next);
+            Console.WriteLine(startElement.Value);
+        }
+
         internal IEnumerable<Element> Next()
         {
             if(Iterator.Next != null) {
