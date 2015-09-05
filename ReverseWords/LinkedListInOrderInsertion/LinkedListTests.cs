@@ -20,7 +20,21 @@
             int lastAddedItem = list.Last();
 
             Assert.AreEqual(testValue, lastAddedItem);
+        }
 
+        [Test,Timeout(500)]
+        public void InsertedLowerElementIsNotLast() {
+            LinkedList list = new LinkedList();
+
+            int testValue = 5;
+            int smallerTestValue = 3;
+
+            list.Add(testValue);
+            list.Add(smallerTestValue);
+
+            int lastAddedItem = list.Last();
+
+            Assert.AreEqual(testValue, lastAddedItem);
         }
     }
 }

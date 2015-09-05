@@ -1,21 +1,42 @@
 ﻿namespace LinkedListInOrderInsertion
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     public class LinkedList
     {
-        internal void Add(int testValue)
+
+        private Element Head = null;
+        internal void Add(int value)
         {
-            throw new NotImplementedException();
+            Element insertedElement = new Element { Value = value };
+            if (Head == null) {
+                Head = insertedElement;
+            } else
+            {
+                Element current = Head;
+                
+                if(current.Value > insertedElement.Value) {
+                    Head = insertedElement;
+                    Head.Next = current;
+                    return;
+                }
+
+                while(current.Next != null) {
+                    
+                    current = current.Next;
+                }
+
+                current.Next = insertedElement;
+            }
         }
 
         internal int Last()
         {
-            throw new NotImplementedException();
+            Element current = Head;
+            while (current.Next != null)
+            {
+                current = current.Next;
+            }
+
+            return current.Value;
         }
     }
 }
