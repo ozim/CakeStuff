@@ -36,5 +36,27 @@
 
             Assert.AreEqual(testValue, lastAddedItem);
         }
+
+        [Test]
+        public void InsertedMultipleItemsAreSorted()
+        {
+            LinkedList list = new LinkedList();
+
+            int[] values = { 5, 3, 4, 0 };
+            
+            foreach (int val in values)
+            {
+                list.Add(val);
+            }
+
+            Array.Sort(values);
+            
+            int counter = 0;
+
+            foreach(var item in list.Next()) {
+                Assert.AreEqual(values[counter], item.Value);
+                counter++;
+            }
+        }
     }
 }
