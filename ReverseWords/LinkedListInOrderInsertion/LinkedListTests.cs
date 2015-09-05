@@ -13,6 +13,14 @@
         [Test]
         public void InsertedElementCanBeRetrieved() {
             LinkedList list = new LinkedList();
+
+            int testValue = 1;
+            list.Add(testValue);
+
+            int lastAddedItem = list.Last();
+
+            Assert.AreEqual(testValue, lastAddedItem);
+
         }
     }
 }

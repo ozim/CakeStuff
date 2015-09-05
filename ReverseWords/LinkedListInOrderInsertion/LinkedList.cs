@@ -8,6 +8,14 @@
 
     public class LinkedList
     {
-        
+        internal void Add(int testValue)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal int Last()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
