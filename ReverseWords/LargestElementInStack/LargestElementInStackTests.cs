@@ -1,5 +1,6 @@
 ﻿namespace LargestElementInStack
 {
+    using System;
     using NUnit.Framework;
 
     [TestFixture]
@@ -68,6 +69,13 @@
             int returnedValue = stack.GetMax();
 
             Assert.AreEqual(secondValue, returnedValue);
+        }
+
+        [Test]
+        public void ThrowsInvalidOperationExceptionWhilePopOnEmptyStack() {
+            LargestElementInStack stack = new LargestElementInStack();
+
+            Assert.Throws(typeof(InvalidOperationException), () => stack.Pop());
         }
     }
 }
