@@ -1,11 +1,15 @@
 ﻿namespace BracesValidator
 {
+    using System;
     using System.Collections.Generic;
 
     public class BracesValidator
     {
         public bool Validate(string code)
         {
+            if(code == null) {
+                throw new ArgumentNullException("code");
+            }
             char[] codeArray = code.ToCharArray();
 
             Dictionary<char, char> openersClosersMap = new Dictionary<char, char>();
