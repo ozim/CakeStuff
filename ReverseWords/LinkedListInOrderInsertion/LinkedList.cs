@@ -43,6 +43,9 @@
         internal int Last()
         {
             Element current = Head;
+            if(current == null) {
+                throw new InvalidOperationException("List is empty");
+            }
             while (current.Next != null)
             {
                 current = current.Next;

@@ -58,5 +58,12 @@
                 counter++;
             }
         }
+
+        [Test]
+        public void LastOneEmptyListThrowsInvalidOperation()
+        {
+            LinkedList list = new LinkedList();
+            Assert.Throws(typeof(InvalidOperationException), () => list.Last());
+        }
     }
 }
