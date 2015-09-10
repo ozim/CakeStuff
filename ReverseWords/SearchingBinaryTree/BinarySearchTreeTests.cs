@@ -50,5 +50,11 @@
             BinarySearchTree tree = new BinarySearchTree();
             Assert.Throws(typeof(InvalidOperationException), () => tree.FindSecondLargest());
         }
+
+        [Test]
+        public void ThrowsNullArgumentExceptionWhenNullNodePassed() {
+            BinarySearchTree tree = new BinarySearchTree();
+            Assert.Throws(typeof(ArgumentNullException), () => tree.Add(null));
+        }
     }
 }

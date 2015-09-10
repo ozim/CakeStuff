@@ -7,6 +7,9 @@
         public Node Root { get; private set; }
 
         public void Add(Node node) {
+        if(node == null) {
+                throw new ArgumentNullException("node");
+        }
             if(Root!=null) {
                 Node current = Root;
 
