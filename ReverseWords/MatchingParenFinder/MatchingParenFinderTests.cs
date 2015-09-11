@@ -1,6 +1,7 @@
 ﻿namespace MatchingParenFinder
 {
     using NUnit.Framework;
+    using System;
 
     [TestFixture]
     public class MatchingParenFinderTests
@@ -11,5 +12,22 @@
             MatchingParenFinder finder = new MatchingParenFinder();
             return finder.FindMatchingParenPosition(code, startPosition);
         }
+
+        [Test]
+        public void StartPositionNegative()
+        {
+            string code = "some";
+            MatchingParenFinder finder = new MatchingParenFinder();
+            Assert.Throws(typeof(ArgumentOutOfRangeException), () => finder.FindMatchingParenPosition(code, -5));
+        }
+        
+        [Test]
+        public void StartPositionAboveCodeLength()
+        {
+            string code = "some";
+            MatchingParenFinder finder = new MatchingParenFinder();
+            Assert.Throws(typeof(ArgumentOutOfRangeException), () => finder.FindMatchingParenPosition(code, 1000));
+        }
+
     }
 }
