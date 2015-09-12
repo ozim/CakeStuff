@@ -29,5 +29,12 @@
             Assert.Throws(typeof(ArgumentOutOfRangeException), () => finder.FindMatchingParenPosition(code, 1000));
         }
 
+        [Test]
+        public void CodeIsNullOrEmptyThrowsArgumentException()
+        {
+            string code = null;
+            MatchingParenFinder finder = new MatchingParenFinder();
+            Assert.Throws(typeof(ArgumentException), () => finder.FindMatchingParenPosition(code, 1000));
+        }
     }
 }
